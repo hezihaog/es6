@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构表达式</title>
+</head>
+<body>
+    <script>
+        //------------- 1）数组解构 -------------
+        let arr = [1,2,3];
+        //一个个赋值，太麻烦了
+        // let a = arr[0];
+        // let b = arr[1];
+        // let c = arr[2];
+        //数组解构，一行搞定
+        //let[a,b,c] = arr;
+        // console.log(a);
+        // console.log(b);
+        // console.log(c);
+
+        //------------- 2）对象解构 -------------
+        // const person = {
+        //     name: "jack",
+        //     age: 21,
+        //     language: ['java', 'js', 'css']
+        // }
+        //一行行取出对象中的属性，麻烦
+        // const name = person.name;
+        // const age = person.age;
+        // const language = person.language;
+
+        //对象解耦，一行搞定
+        //const {name,age,language} = person;
+        //console.log(name, age, language);
+
+        //如果想解构后，改名，也是可以的
+        //const {name:n,age:a,language:l} = person;
+        //console.log(n, a, l);
+
+        //------------- 3）字符串拓展 -------------
+        // let str = "hello.vue";
+        // //判断是不是以指定字符串开始
+        // console.log(str.startsWith('hello'));//true
+        // //判断是不是以指定字符串结束
+        // console.log(str.endsWith('vue'));//true
+        // //是否包含某个字符串
+        // console.log(str.includes('e'));//true
+        // //是否包含某个字符串
+        // console.log(str.includes('hello'));//true
+        
+        //------------- 4）字符串模板 -------------
+        let ss = `<div>
+                <span>hello world</span>
+                </div>
+        `
+        console.log(ss);
+
+        //插值表达式，用反引号来包裹内容
+        const person = {
+            name: "jack",
+            age: 21,
+            language: ['java', 'js', 'css']
+        }
+        function fun() {
+            return "这是一个函数"
+        }
+        const {name,age,language} = person;
+        //支持插值变量，表达式，方法运算等
+        let info = `我是${name}, 今年${age + 10}岁了，我想说${fun()}`;
+        console.log(info);
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数优化</title>
+</head>
+<body>
+    <script>
+        //-------------- 1）函数默认值 --------------
+        //在ES6之前，我们无法给一个函数的参数设置默认值，只能通过变通写法
+        function add(a, b) {
+            //判断b是否为空，为空则赋值一个1为默认值
+            b = b || 1;
+            return a + b;
+        }
+        //传1个值
+        console.log(add(10));
+
+        //现在可以这么写，直接给参数写上默认值，没传则会自动设置上默认值
+        function add2(a, b = 1) {
+            return a + b;
+        }
+        console.log(add2(20));
+
+        //-------------- 2）不定参数 --------------
+        function fun(...values) {
+            console.log(values.length);
+        }
+        fun(1, 2);//2
+        fun(1, 2, 3, 4);//4
+
+        //-------------- 3）箭头函数 --------------
+        //以前声明一个方法
+        // var print = function(obj) {
+        //     console.log(obj);
+        // }
+        //箭头函数，声明方法
+        var print = obj => console.log(obj);
+        print('hello');
+
+        //2个参数的方法
+        var sum = function(a, b) {
+            var c = a + b;
+            return c;
+        }
+        //多个参数用括号括起来，一行的方法体可以不写花括号
+        var sum2 = (a,b) => a + b;
+        console.log(sum2(11, 12));
+
+        //多行方法体
+        var sum3 = (a,b) => {
+            var c = a + b;
+            return c;
+        }
+        console.log(sum3(10, 20));
+
+        const person = {
+            name: "jack",
+            age: 21,
+            language: ['java', 'js', 'css']
+        }
+
+        function hello(person) {
+            console.log("hello，" + person.name);
+        }
+
+        //箭头函数声明方法
+        //var hello2 = (param) => console.log("hello，" + person.name);
+        //箭头函数+解构，既然只需要name属性，那直接解耦对象的name属性出来即可
+        var hello2 = ({name}) => console.log("hello，" + name);
+        hello2(person)
+    </script>
+</body>
+</html>

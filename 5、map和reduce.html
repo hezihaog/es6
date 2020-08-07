@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map和reduce</title>
+</head>
+<body>
+    <script>
+        //数组中新增了map和reduce方法
+        //map()，接收一个函数，将原数组中的所有元素用这个函数处理后，再放入新数组返回
+        let arr = ['1', '20','-5','3'];
+
+        //传入一个函数，对每个元素，进行乘以2，再返回
+        // arr = arr.map((item) => {
+        //     return item * 2
+        // })
+        arr = arr.map(item => item * 2);
+
+        //[2, 40, -10, 6]
+        console.log(arr);
+
+        //reduce()，为数组中每一个元素依次执行回调函数，不包括数组中被删除或从未赋值的元素
+        //格式：arr.reduce(callback, [initialValue]);，initialValue为初始值，可不传
+        /**
+         * 参数
+         * 1、previousValue：上一次调用回调返回的值，或者是提供的初始化值initialValue
+         * 2、currentValue：数组中当前被处理的元素
+         * 3、index：当前元素在数组中的索引
+         * 4、array：调用reduce的数组
+         */
+         //没有指定初始值时，从数组的第一个元素，就是2开始，和后面的值进行累加
+         //如果指定了初始值，就从初始化值开始，和第一个元素开始，相当于强行插入了一个值进数组的第一位一样
+         let result = arr.reduce((previousValue, currentValue) => {
+            console.log("上一次处理后：" + previousValue);
+            console.log("当前正在处理：" + currentValue);
+            return previousValue + currentValue;
+        }, 100);
+        console.log(result);
+    </script>
+</body>
+</html>

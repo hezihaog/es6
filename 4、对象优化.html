@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象优化</title>
+</head>
+<body>
+    <script>
+        //-------------- 1）Object新增了4个方法 --------------
+        const person = {
+            name: "jack",
+            age: 21,
+            language: ['java', 'js', 'css']
+        }
+        //keys()方法，获取对象中的所有属性的名称
+        console.log(Object.keys(person));//["name", "age", "language"]
+        //values()方法，获取对象中所有属性的值
+        console.log(Object.values(person));//["jack", 21, Array(3)]
+        //entries()方法，获取对象中所有属性的名称和值，数组中有多个数组，每个数组里有2个值，分别是key和value
+        console.log(Object.entries(person));//[Array(2), Array(2), Array(2)]
+
+        //合并属性
+        const target = { a:1 };
+        const source1 = { b: 2 }
+        const source2 = { c: 3 }
+        //合并成：{a:1,b:2,c:3}，assign()方法，第一个参数是目标对象，后面的参数都是要背复制属性的对象
+        Object.assign(target, source1, source2);
+        console.log(target);//{a: 1, b: 2, c: 3}
+
+        //-------------- 2）声明对象的简写 --------------
+        const age = 23;
+        const name = "张三"
+        //属性名和属性值，一一对应赋值
+        const person1 = {age: age, name: name}
+
+        //2、简写：如果属性名和属性值是一样的，就可以只写一个
+        const person2 = {age, name}
+        console.log(person2);//{age: 23, name: "张三"}
+
+        //3、对象的函数属性简写
+        let person3 = {
+            name: 'Jack',
+            //以前的写法
+            eat: function(food) {
+                console.log(this.name + "在吃" + food);
+            },
+            //箭头函数this不能使用，需要用对象来调用
+            eat2: food => console.log(person3.name + "在吃" + food),
+            //另外一种写法
+            eat3(food) {
+                console.log(this.name + "在吃" + food);
+            }
+        }
+        person3.eat("香蕉");
+        person3.eat2("苹果");
+        person3.eat3("橘子");
+
+        //---------------- 4、对象拓展运算符 ----------------
+        //1）拷贝对象（深拷贝）
+        let p1 = {name: 'Amy', age: 15}
+        let someone = {...p1}
+        console.log(someone);
+
+        //2）合并对象
+        let age1 = { age: 15 }
+        let name1 = { name: 'Amy' }
+        //如果之前已经有一个同名属性，那么拷贝的值会覆盖掉之前的
+        let p2 = {
+            name: "张三"
+        }
+        //将age1的所有属性放到p2，再将name1的所有属性也放到p2中
+        p2 = {...age1, ...name1}
+        console.log(p2);//{age: 15, name: "Amy"}
+    </script>
+</body>
+</html>

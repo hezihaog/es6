@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let使用</title>
+</head>
+<body>
+    <script>
+        //------------- 1）let特性：块级作用域 -------------
+        //var声明的变量会越域
+        //let声明的变量有严格的作用域
+        // {
+        //     var a = 1;
+        //     let b = 2;
+        // }
+        // console.log(a);//1
+        // console.log(b);//ReferenceError：b is not defined
+
+        //------------- 2）let特性：不能重复声明 -------------
+        //var可以声明多次
+        //let只能声明一次
+        // var m = 1;
+        // var m = 2;
+        // let n = 3;
+        // //重复声明，就会报错，Uncaught SyntaxError: Identifier 'n' has already been declared
+        // let n = 4;
+        // console.log(m);//2
+        // console.log(n);//Uncaught SyntaxError: Identifier 'n' has already been declared
+
+        //------------- 3）let特性：不会变量提升 -------------
+        //var会变量提升
+        //let不存在变量提升
+        // console.log(x);//undefined
+        // var x = 10;
+        // console.log(y);//Uncaught ReferenceError: Cannot access 'y' before initialization
+        // let y = 20;
+
+        //------------- 3）const特性：常量 -------------
+        //1：const声明后，不允许改变
+        //2：一旦声明必须初始化，否则会报错
+        const a = 1;
+        a = 3;//修改常量，报错：Uncaught TypeError: Assignment to constant variable.
+    </script>
+</body>
+</html>
